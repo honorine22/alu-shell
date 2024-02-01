@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-# what luck do I have on 4th, 8th iteration
+# displays Best School 10 times.
 
-COUNT=1
-while [ $COUNT -lt 11 ]
+COUNTER=1
+while [ $COUNTER -lt 11 ]
 do
-    if [ $COUNT = 4 ]
+    if [ $COUNTER = 4 ]
     then
         echo "bad luck"
-    elif [ $COUNT = 8 ]
+    elif [ $COUNTER = 8 ]
     then
         echo "good luck"
     else
         echo "Best School"
     fi
-    let COUNT+=1
+    let COUNTER+=1
 done
