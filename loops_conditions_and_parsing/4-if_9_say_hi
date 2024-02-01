@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-# use while to say hi if 9
-
-COUNT=0
-while [ $COUNT -lt 11 ]
+# This script is displaying "Best School" and "Hi"
+x="0"
+while [ $x -lt 10 ]
 do
-    if [ $COUNT = 9 ]
+    echo "Best School"
+    if ((x == 8))
     then
         echo "Hi"
-    else
-        echo "Best School"
     fi
-    let COUNT+=1
+    x=$((x+1))
 done
