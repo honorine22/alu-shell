@@ -1,15 +1,39 @@
 #!/usr/bin/env bash
-# displays the time for 12 hours and 59 minutes.
+# Function to display time in 12-hour format
+display_time() {
+    hour=$1
+    minute=$2
 
-HOURS=0
-while [ $HOURS -lt 13 ]
-do
-    echo "Hour: $HOURS"
-    MINUTES=1
-    while [ $MINUTES -lt 60 ]
-    do
-        echo $MINUTES
-	let MINUTES+=1
-    done
-    let HOURS+=1
-done
+    # Determine AM or PM
+    if [ $hour -ge 12 ]; then
+        meridian="PM"
+    else
+        meridian="AM"
+    fi
+
+    # Convert 24-hour format to 12-hour format
+    if [ $hour -gt 12 ]; then
+        hour=$((hour - 12))
+    fi
+
+    # Display time
+    printf "%02d:%02d %s\n" $hour $minute $meridian
+}
+
+# Initialize variables
+hour=0
+minute=1
+
+# Loop to display time
+while [ $hour -le 12 ]; do
+    display_time $hour $minute
+
+    # Increment minute
+    minute=$((minute + 1))
+
+    # If minute reaches 60, reset to 1 and increment hour
+    if [ $minute -eq 60 ]; then
+        minute=1
+        hour=$((hour + 1))
+    fi
+done | head -n 70
